@@ -7,11 +7,12 @@ import Hero from './Components/Hero'
 const App = () => {
   return (
     <div>
-        {/* <NavBar/> */}
-        {/* <WhyPizzaFlux/> */}
-        {/* <ReadyOrder/> */}
-        <Hero/>
+        <NavBar/>
+         <div className='flex flex-col gap-35 my-15 '><Hero/>
         
+        <WhyPizzaFlux/>
+        <ReadyOrder/></div>
+       
     </div>
   )
 }
