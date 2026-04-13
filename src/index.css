@@ -1,2 +1,9 @@
 @import "tailwindcss";
 
+
+
+
+
+.navbar{
+  font-family: "Cabin Sketch", sans-serif;
+}
