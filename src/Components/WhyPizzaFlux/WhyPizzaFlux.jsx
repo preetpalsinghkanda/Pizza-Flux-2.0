@@ -4,8 +4,8 @@ import WhyPoint from "./WhyPoint";
 const WhyPizzaFlux = () => {
   return (
   
-      <div className="border max-w-7xl m-auto" >
-        <h3>Why PizzaFlux 2.0 ?</h3>
+      <div className=" max-w-7xl m-auto flex flex-col whypizza gap-14" >
+        <h3 className="text-5xl text-center text-[#ff5f2e] " >Why PizzaFlux 2.0 ?</h3>
         <div className="flex gap-4 ">
           <WhyPoint
             src={"https://cdn.lordicon.com/xktzfwru.json"}
