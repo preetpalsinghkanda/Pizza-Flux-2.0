@@ -1,20 +1,21 @@
-import React from 'react'
-import NavBar from './Components/NavBar'
-import WhyPizzaFlux from './Components/WhyPizzaFlux/WhyPizzaFlux'
-import ReadyOrder from './Components/ReadyOrder'
-import Hero from './Components/Hero'
+import React from "react";
+import NavBar from "./Components/NavBar";
+import WhyPizzaFlux from "./Components/WhyPizzaFlux/WhyPizzaFlux";
+import ReadyOrder from "./Components/ReadyOrder";
+import Hero from "./Components/Hero";
+import EmptyCart from "./Components/EmptyCart";
 
 const App = () => {
   return (
     <div>
-        <NavBar/>
-          <div className='flex flex-col gap-35 my-15 '><Hero/><WhyPizzaFlux/> <ReadyOrder/> </div>
-        
-       
-       
-       
+      <NavBar />
+      {/* <div className="flex flex-col gap-35 my-15 ">
+        <Hero />
+        <WhyPizzaFlux /> <ReadyOrder />{" "}
+      </div> */}
+      <EmptyCart/>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
