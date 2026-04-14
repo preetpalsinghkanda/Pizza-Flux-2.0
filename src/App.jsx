@@ -8,9 +8,9 @@ const App = () => {
   return (
     <div>
         <NavBar/>
-          <div className='flex flex-col gap-35 my-15 '><Hero/></div>
+          <div className='flex flex-col gap-35 my-15 '><Hero/><WhyPizzaFlux/></div>
         
-       {/* <WhyPizzaFlux/>
+       {/* 
         <ReadyOrder/> */}
        
     </div>
