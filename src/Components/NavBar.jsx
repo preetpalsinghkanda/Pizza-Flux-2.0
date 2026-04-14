@@ -8,8 +8,8 @@ const NavBar = () => {
       <div className="bg-[#111110]   flex justify-center border-b-1 border-[#ffffff13]">
         <div className="navbar flex justify-around lg:justify-between items-center w-full py-2 max-w-6xl m-auto">
           <div className="flex items-center gap-2">
-            <img src={PizzaLogo} alt="" className="h-15" />
-            <span className="text-3xl text-[#ff5f2e]">PizzaFlux 2.0</span>
+            <img src={PizzaLogo} alt="" className="md:h-15 h-10 " />
+            <span className="md:text-3xl text-xl text-[#ff5f2e]">PizzaFlux 2.0</span>
           </div>
 
           <div className=" flex-row items-center gap-4 hidden md:flex">
