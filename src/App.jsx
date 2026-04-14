@@ -4,6 +4,7 @@ import WhyPizzaFlux from "./Components/WhyPizzaFlux/WhyPizzaFlux";
 import ReadyOrder from "./Components/ReadyOrder";
 import Hero from "./Components/Hero";
 import EmptyCart from "./Components/EmptyCart";
+import Signup from "./Components/Signup";
 
 const App = () => {
   return (
@@ -13,7 +14,8 @@ const App = () => {
         <Hero />
         <WhyPizzaFlux /> <ReadyOrder />{" "}
       </div> */}
-      <EmptyCart/>
+      {/* <EmptyCart/> */}
+      <Signup/>
     </div>
   );
 };

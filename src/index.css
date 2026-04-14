@@ -1,10 +1,11 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 
 
 
 
 
-.navbar,.whypizza,.readyorder,.hero,.small-navbar,.empty-cart{
+.navbar,.whypizza,.readyorder,.hero,.small-navbar,.empty-cart,.signup{
   font-family: "Cabin Sketch", sans-serif;
 }
 
@@ -12,4 +13,8 @@
 body{
  
   background-color: #000000;
+}
+
+.signup-heading{
+  font-family: "Monoton", sans-serif;
 }
