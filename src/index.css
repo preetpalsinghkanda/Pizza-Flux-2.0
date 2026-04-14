@@ -4,11 +4,12 @@
 
 
 
-.navbar,.whypizza,.readyorder,.hero{
+.navbar,.whypizza,.readyorder,.hero,.small-navbar{
   font-family: "Cabin Sketch", sans-serif;
 }
 
 
 body{
+ 
   background-color: #000000;
 }
