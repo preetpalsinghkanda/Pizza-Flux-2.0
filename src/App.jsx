@@ -8,10 +8,10 @@ const App = () => {
   return (
     <div>
         <NavBar/>
-          <div className='flex flex-col gap-35 my-15 '><Hero/><WhyPizzaFlux/></div>
+          <div className='flex flex-col gap-35 my-15 '><Hero/><WhyPizzaFlux/> <ReadyOrder/> </div>
         
-       {/* 
-        <ReadyOrder/> */}
+       
+       
        
     </div>
   )
