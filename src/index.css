@@ -5,7 +5,7 @@
 
 
 
-.navbar,.whypizza,.readyorder,.hero,.small-navbar,.empty-cart,.signup{
+.navbar,.whypizza,.readyorder,.hero,.small-navbar,.empty-cart,.signup,.pizza-main-hero{
   font-family: "Cabin Sketch", sans-serif;
 }
 
@@ -17,4 +17,9 @@ body{
 
 .signup-heading{
   font-family: "Monoton", sans-serif;
+}
+
+
+.main-pizza{
+  filter: drop-shadow(15px 15px 180px rgb(255, 0, 0));
 }
