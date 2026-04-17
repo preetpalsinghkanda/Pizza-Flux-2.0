@@ -6,6 +6,7 @@ import Hero from "./Components/Hero";
 import EmptyCart from "./Components/EmptyCart";
 import Signup from "./Components/Signup";
 import PizzaMenuHero from "./Components/PizzaMenu/PizzaMenuHero";
+import PizzaMenu from "./Components/PizzaMenu/PizzaMenu";
 
 const App = () => {
   return (
@@ -17,7 +18,8 @@ const App = () => {
       </div> */}
       {/* <EmptyCart/> */}
       {/* <Signup/> */}
-      <PizzaMenuHero/>
+      {/* <PizzaMenuHero/> */}
+      <PizzaMenu/>
     </div>
   );
 };
