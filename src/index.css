@@ -1,5 +1,6 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+@import "tailwindcss";
+
 
 
 
@@ -23,3 +24,8 @@ body{
 .main-pizza{
   filter: drop-shadow(15px 15px 180px rgb(255, 0, 0));
 }
+
+.pizza-card-img{
+  filter: drop-shadow(1px 8px 16px rgba(255, 0, 0, 0.507));
+}
+
