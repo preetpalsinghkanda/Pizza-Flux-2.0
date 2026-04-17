@@ -6,7 +6,7 @@ import chickenNewPizza from "/chickennew.png";
 
 const PizzaMenu = () => {
   return (
-    <div className=" text-white m-auto max-w-7xl pizza-main flex flex-col gap-2 px-6">
+    <div className=" text-white m-auto max-w-7xl pizza-main flex flex-col gap-2 px-6 my-20">
       <div className="relative top-12">
         <h3 className="lg:text-7xl md:text-6xl sm:text-5xl text-5xl">
           Our Signature <span className="text-[#ff2600] text-6xl sm:text-6xl md:text-7xl lg:text-8xl">Pizzas</span>

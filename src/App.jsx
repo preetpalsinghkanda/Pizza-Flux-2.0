@@ -7,6 +7,7 @@ import EmptyCart from "./Components/EmptyCart";
 import Signup from "./Components/Signup";
 import PizzaMenuHero from "./Components/PizzaMenu/PizzaMenuHero";
 import PizzaMenu from "./Components/PizzaMenu/PizzaMenu";
+import PizzaCustomize from "./Components/PizzaMenu/PizzaCustomize";
 
 const App = () => {
   return (
@@ -19,7 +20,8 @@ const App = () => {
       {/* <EmptyCart/> */}
       {/* <Signup/> */}
       {/* <PizzaMenuHero/> */}
-      <PizzaMenu/>
+      {/* <PizzaMenu/> */}
+      <PizzaCustomize/>
     </div>
   );
 };

@@ -6,26 +6,34 @@
 
 
 
-.navbar,.whypizza,.readyorder,.hero,.small-navbar,.empty-cart,.signup,.pizza-main-hero,.pizza-main{
+.navbar,
+.whypizza,
+.readyorder,
+.hero,
+.small-navbar,
+.empty-cart,
+.signup,
+.pizza-main-hero,
+.pizza-main ,
+.pizza-customize{
   font-family: "Cabin Sketch", sans-serif;
 }
 
 
-body{
- 
+body {
+
   background-color: #000000;
 }
 
-.signup-heading{
+.signup-heading {
   font-family: "Monoton", sans-serif;
 }
 
 
-.main-pizza{
+.main-pizza {
   filter: drop-shadow(15px 15px 180px rgb(255, 0, 0));
 }
 
-.pizza-card-img{
+.pizza-card-img {
   filter: drop-shadow(1px 8px 16px rgba(255, 0, 0, 0.507));
 }
-
