@@ -21,7 +21,7 @@ const App = () => {
       {/* <Signup/> */}
       {/* <PizzaMenuHero/> */}
       {/* <PizzaMenu/> */}
-      <PizzaCustomize/>
+      {/* <PizzaCustomize/> */}
     </div>
   );
 };
