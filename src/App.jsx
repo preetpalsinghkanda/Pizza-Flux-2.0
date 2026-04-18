@@ -8,20 +8,49 @@ import Signup from "./Components/Signup";
 import PizzaMenuHero from "./Components/PizzaMenu/PizzaMenuHero";
 import PizzaMenu from "./Components/PizzaMenu/PizzaMenu";
 import PizzaCustomize from "./Components/PizzaMenu/PizzaCustomize";
-
+import PizzaContext from "./Context/Context";
+import { useContext } from "react";
+import { Route, Routes } from "react-router-dom";
 const App = () => {
   return (
     <div>
       <NavBar />
-      {/* <div className="flex flex-col gap-35 my-15 ">
-        <Hero />
-        <WhyPizzaFlux /> <ReadyOrder />{" "}
-      </div> */}
-      {/* <EmptyCart/> */}
-      {/* <Signup/> */}
-      {/* <PizzaMenuHero/> */}
-      {/* <PizzaMenu/> */}
-      {/* <PizzaCustomize/> */}
+      <div className="flex flex-col gap-35 my-15 ">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Hero />
+                <WhyPizzaFlux />
+                <ReadyOrder />
+              </>
+            }
+          />
+
+          <Route path="/signup" element={<Signup />} />
+
+          <Route
+            path="/menu"
+            element={
+              <>
+                <PizzaMenuHero />
+                <PizzaMenu />
+              </>
+            }
+
+          />
+
+          <Route path="/cart" element={<EmptyCart/> }/>
+
+
+
+        </Routes>
+      </div>
+      {/* 
+      
+     
+      <PizzaCustomize/>  */}
     </div>
   );
 };
