@@ -4,7 +4,7 @@ import chickenPizza from "/chicken.png";
 const PizzaCustomize = () => {
   return (
     <div>
-      <div className="border border-[white] text-white pizza-customize m-auto max-w-lg px-8">
+      <div className="bg-[#00000031] border border-[#ffffff3c] rounded-4xl text-white pizza-customize m-auto max-w-lg px-8">
         <div className="relative">
           <img
             src={chickenPizza}
@@ -25,29 +25,29 @@ const PizzaCustomize = () => {
           <div className="flex flex-col gap-2">
             <h5>CHOOSE SIZE</h5>
             <div className="text-md flex gap-3">
-              <span className="border px-3 py-1.5 rounded-xl">
+              <span className="bg-[#262626] text-[#d3d3d3] px-3 py-1.5 rounded-xl">
                 Regular &nbsp; ₹<span className="text-sm">199</span>{" "}
               </span>
-              <span className="border px-3 py-1.5 rounded-xl">
+              <span className="bg-[#262626] text-[#d3d3d3] px-3 py-1.5 rounded-xl">
                 Medium &nbsp; ₹<span className="text-sm">299</span>{" "}
               </span>
-              <span className="border px-3 py-1.5 rounded-xl">
+              <span className=" px-3 py-1.5 rounded-xl bg-[#262626] text-[#d3d3d3]">
                 Large &nbsp; ₹<span className="text-sm">499</span>{" "}
               </span>
             </div>
           </div>
 
-           <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2">
             <h5>CHOOSE CRUST</h5>
             <div className="text-md flex gap-3">
-              <span className="border px-3 py-1.5 rounded-xl">
+              <span className="bg-[#262626] text-[#d3d3d3] px-3 py-1.5 rounded-xl">
                 Thin&nbsp;&nbsp;₹<span className="text-sm">199</span>{" "}
               </span>
-              <span className="border px-3 py-1.5 rounded-xl">
+              <span className="bg-[#262626] text-[#d3d3d3] px-3 py-1.5 rounded-xl">
                 Cheese-brust &nbsp;&nbsp; ₹
                 <span className="text-sm">299</span>{" "}
               </span>
-              <span className="border px-3 py-1.5 rounded-xl">
+              <span className="bg-[#262626] text-[#d3d3d3] px-3 py-1.5 rounded-xl">
                 Pan &nbsp;&nbsp;₹<span className="text-sm">499</span>{" "}
               </span>
             </div>
@@ -56,31 +56,29 @@ const PizzaCustomize = () => {
           <div className="flex flex-col gap-2">
             <h5>CHOOSE TOPPINGS</h5>
             <div className="text-md flex gap-3">
-              <span className="border px-3 py-1.5 rounded-xl">
+              <span className=" px-3 py-1.5 rounded-xl bg-[#262626] text-[#d3d3d3]">
                 Olive&nbsp;&nbsp;₹<span className="text-sm">199</span>{" "}
               </span>
-              <span className="border px-3 py-1.5 rounded-xl">
-                Corn &nbsp;&nbsp; ₹
-                <span className="text-sm">299</span>{" "}
+              <span className=" px-3 py-1.5 rounded-xl bg-[#262626] text-[#d3d3d3]">
+                Corn &nbsp;&nbsp; ₹<span className="text-sm">299</span>{" "}
               </span>
-              <span className="border px-3 py-1.5 rounded-xl">
-                Extra Cheese&nbsp;&nbsp;₹<span className="text-sm">499</span>{" "}
+              <span className=" px-3 py-1.5 rounded-xl bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]">
+                Extra Cheese&nbsp;&nbsp;₹
+                <span className="text-sm">499</span>{" "}
               </span>
             </div>
           </div>
-
-
-
-
-
         </div>
 
-
-        <div className="flex my-8 px-4">
-          <button>Add to Cart</button>
-          <div>
-            <h6>TOTAL</h6>
-            <span>₹249</span>
+        <div className="flex my-8 px-4  text-black gap-8 ">
+          <button className="add-cart w-full font-[500] border bg-[#ff784d] text-md rounded-xl flex justify-center items-center gap-3">
+            {" "}
+            <span class="material-symbols-outlined">shopping_cart</span>Add to
+            Cart
+          </button>
+          <div className="text-white flex flex-col items-end font-extrabold">
+            <h6 className="text-[14px] text-[#ffffffe0] ">TOTAL</h6>
+            <span className="text-2xl">₹249</span>
           </div>
         </div>
       </div>

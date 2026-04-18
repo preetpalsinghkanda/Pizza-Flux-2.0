@@ -25,7 +25,7 @@ body {
   background-color: #000000;
 }
 
-.signup-heading {
+.signup-heading ,.add-cart{
   font-family: "Monoton", sans-serif;
 }
 
