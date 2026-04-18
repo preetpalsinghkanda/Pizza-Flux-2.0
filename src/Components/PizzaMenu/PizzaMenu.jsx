@@ -1,7 +1,7 @@
 import React from "react";
 
 import chickenPizza from "/chicken.png";
-import pepperoniPizza from "/peporoni.png";
+import pepperoniPizza  from '/pepperoni.png';
 import chickenNewPizza from "/chickennew.png";
 
 const PizzaMenu = () => {

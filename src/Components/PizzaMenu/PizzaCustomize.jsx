@@ -1,22 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import chickenPizza from "/chicken.png";
+import pepperoniPizza from "/pepperoni.png";
+import chickenNewPizza from "/chickennew.png";
+import PizzaContext from "../../Context/Context";
 
 const PizzaCustomize = () => {
+  const { selectedPizza, setSelectedPizza } = useContext(PizzaContext);
+
+if (!selectedPizza) return null;
   return (
     <div>
       <div className="bg-[#00000031] border border-[#ffffff3c] rounded-4xl text-white pizza-customize m-auto max-w-lg px-8">
         <div className="relative">
           <img
-            src={chickenPizza}
+            src={selectedPizza.pizzaImg}
             alt=""
             className="w-full h-[300px] object-cover"
           />
           <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
           <div className="absolute">
-            <h4 className="text-4xl font-extrabold">Chicken Blast</h4>
+            <h4 className="text-4xl font-extrabold">
+              {selectedPizza.pizzaName}
+            </h4>
             <p className="text-lg text-[#ffffffbb] max-w-md">
-              Classic hand-stretched sourdough, San Marzano tomatoes, fresh
-              buffalo mozzarella, and aromatic basil.
+              {selectedPizza.dis}
             </p>
           </div>
         </div>
@@ -29,10 +36,10 @@ const PizzaCustomize = () => {
                 Regular &nbsp; ₹<span className="text-sm">199</span>{" "}
               </span>
               <span className="bg-[#262626] text-[#d3d3d3] px-3 py-1.5 rounded-xl">
-                Medium &nbsp; ₹<span className="text-sm">299</span>{" "}
+                Medium &nbsp; ₹<span className="text-sm">249</span>{" "}
               </span>
               <span className=" px-3 py-1.5 rounded-xl bg-[#262626] text-[#d3d3d3]">
-                Large &nbsp; ₹<span className="text-sm">499</span>{" "}
+                Large &nbsp; ₹<span className="text-sm">299</span>{" "}
               </span>
             </div>
           </div>
@@ -41,14 +48,14 @@ const PizzaCustomize = () => {
             <h5>CHOOSE CRUST</h5>
             <div className="text-md flex gap-3">
               <span className="bg-[#262626] text-[#d3d3d3] px-3 py-1.5 rounded-xl">
-                Thin&nbsp;&nbsp;₹<span className="text-sm">199</span>{" "}
+                Thin&nbsp;&nbsp;₹<span className="text-sm">99</span>{" "}
               </span>
               <span className="bg-[#262626] text-[#d3d3d3] px-3 py-1.5 rounded-xl">
                 Cheese-brust &nbsp;&nbsp; ₹
-                <span className="text-sm">299</span>{" "}
+                <span className="text-sm">199</span>{" "}
               </span>
               <span className="bg-[#262626] text-[#d3d3d3] px-3 py-1.5 rounded-xl">
-                Pan &nbsp;&nbsp;₹<span className="text-sm">499</span>{" "}
+                Pan &nbsp;&nbsp;₹<span className="text-sm">249</span>{" "}
               </span>
             </div>
           </div>
@@ -78,7 +85,7 @@ const PizzaCustomize = () => {
           </button>
           <div className="text-white flex flex-col items-end font-extrabold">
             <h6 className="text-[14px] text-[#ffffffe0] ">TOTAL</h6>
-            <span className="text-2xl">₹249</span>
+            <span className="text-2xl">₹{selectedPizza.pizzaPrice}</span>
           </div>
         </div>
       </div>

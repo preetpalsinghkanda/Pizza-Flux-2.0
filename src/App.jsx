@@ -11,7 +11,10 @@ import PizzaCustomize from "./Components/PizzaMenu/PizzaCustomize";
 import PizzaContext from "./Context/Context";
 import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
+
+
 const App = () => {
+  
   return (
     <div>
       <NavBar />
@@ -41,16 +44,13 @@ const App = () => {
 
           />
 
-          <Route path="/cart" element={<EmptyCart/> }/>
+          <Route path="/cart" element={<><EmptyCart/> </> }/>
 
 
 
         </Routes>
       </div>
-      {/* 
-      
-     
-      <PizzaCustomize/>  */}
+      <PizzaCustomize/>
     </div>
   );
 };
