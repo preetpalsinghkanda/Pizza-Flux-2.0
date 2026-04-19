@@ -3,12 +3,14 @@ import chickenPizza from "/chicken.png";
 import pepperoniPizza from "/pepperoni.png";
 import chickenNewPizza from "/chickennew.png";
 import PizzaContext from "../../Context/Context";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setSizePrice,
   setCrustPrice,
   setToppingsPrice,
 } from "../../Redux/Features/PizzaPriceSlice";
+
+import { PizzaCartIncrement , PizzaCartDecrement } from "../../Redux/Features/PizzaCart";
 
 const PizzaCustomize = () => {
   const {
@@ -20,8 +22,18 @@ const PizzaCustomize = () => {
     setCrust,
     toppings,
     setToppings,
+    isAddToCartEnabled,
+    setIsAddToCartEnabled,
   } = useContext(PizzaContext);
   const dispatch = useDispatch();
+
+  const { basePrice, sizePrice, crustPrice, toppingsPrice } = useSelector(
+    (state) => state.PizzaPrice,
+  );
+
+  const cartValue = useSelector((state)=> state.PizzaCart.value);
+
+  const PizzaFinalPrice = basePrice + sizePrice + crustPrice + toppingsPrice;
 
   if (!selectedPizza) return null;
   return (
@@ -31,7 +43,7 @@ const PizzaCustomize = () => {
           onClick={() => setSelectedPizza(null)}
           className="absolute top-4 right-4 cursor-pointer text-xl"
         >
-          <span class="material-symbols-outlined">close</span>
+          <span className="material-symbols-outlined">close</span>
         </span>
         <div className="relative">
           <img
@@ -91,6 +103,7 @@ const PizzaCustomize = () => {
                 onClick={() => {
                   if (crust === 99) {
                     setCrust(0);
+                    dispatch(setCrustPrice(0));
                   } else {
                     setCrust(99);
                     dispatch(setCrustPrice(99));
@@ -104,6 +117,7 @@ const PizzaCustomize = () => {
                 onClick={() => {
                   if (crust === 149) {
                     setCrust(0);
+                    dispatch(setCrustPrice(0));
                   } else {
                     setCrust(149);
                     dispatch(setCrustPrice(149));
@@ -118,6 +132,7 @@ const PizzaCustomize = () => {
                 onClick={() => {
                   if (crust === 199) {
                     setCrust(0);
+                    dispatch(setCrustPrice(0));
                   } else {
                     setCrust(199);
                     dispatch(setCrustPrice(199));
@@ -133,10 +148,11 @@ const PizzaCustomize = () => {
           <div className="flex flex-col gap-2">
             <h5>CHOOSE TOPPINGS</h5>
             <div className="text-md flex gap-3">
-             <span
+              <span
                 onClick={() => {
                   if (toppings === 149) {
                     setToppings(0);
+                    dispatch(setToppingsPrice(0));
                   } else {
                     setToppings(149);
                     dispatch(setToppingsPrice(149));
@@ -146,10 +162,11 @@ const PizzaCustomize = () => {
               >
                 Olive&nbsp;&nbsp;₹<span className="text-sm">149</span>{" "}
               </span>
-               <span
+              <span
                 onClick={() => {
                   if (toppings === 179) {
                     setToppings(0);
+                    dispatch(setToppingsPrice(0));
                   } else {
                     setToppings(179);
                     dispatch(setToppingsPrice(179));
@@ -159,10 +176,11 @@ const PizzaCustomize = () => {
               >
                 Corn &nbsp;&nbsp; ₹<span className="text-sm">179</span>{" "}
               </span>
-               <span
+              <span
                 onClick={() => {
                   if (toppings === 249) {
                     setToppings(0);
+                    dispatch(setToppingsPrice(0));
                   } else {
                     setToppings(249);
                     dispatch(setToppingsPrice(249));
@@ -178,14 +196,31 @@ const PizzaCustomize = () => {
         </div>
 
         <div className="flex my-8 px-4  text-black gap-8 ">
-          <button className="add-cart w-full font-[500] border bg-[#ff784d] text-md rounded-xl flex justify-center items-center gap-3">
-            {" "}
-            <span className="material-symbols-outlined">shopping_cart</span>Add
-            to Cart
-          </button>
+          {isAddToCartEnabled ? (
+            <span className=" rounded-2xl w-full font-[500] border bg-[#e77a59ea] flex items-center justify-center gap-4">
+              <button className=" px-2 flex rounded-lg bg-[#e0d5d5ea]">
+                <span className="material-symbols-outlined ">remove</span>
+              </button>{" "}
+              <span className="text-[#ffffff] text-2xl font-extrabold">{cartValue}</span>{" "}
+              <button className=" px-2 flex rounded-lg bg-[#e0d5d5ea]">
+                <span className="material-symbols-outlined">add</span>
+              </button>
+            </span>
+          ) : (
+            <button
+              onClick={() => {
+                setIsAddToCartEnabled(true);
+              }}
+              className="text-xl w-full font-extrabold text-white  border-0 border bg-[#ff784d] text-md rounded-xl flex justify-center items-center gap-3"
+            >
+              <span className="material-symbols-outlined">shopping_cart</span>
+              Add to Cart
+            </button>
+          )}
+
           <div className="text-white flex flex-col items-end font-extrabold">
             <h6 className="text-[14px] text-[#ffffffe0] ">TOTAL</h6>
-            <span className="text-2xl">₹{selectedPizza.pizzaPrice}</span>
+            <span className="text-2xl">₹{PizzaFinalPrice}</span>
           </div>
         </div>
       </div>

@@ -4,7 +4,7 @@ import chickenPizza from "/chicken.png";
 import pepperoniPizza  from '/pepperoni.png';
 import chickenNewPizza from "/chickennew.png";
 import { useDispatch } from "react-redux";
-import { setBasePrice } from "../../Redux/Features/PizzaPriceSlice";
+
 import PizzaContext from "../../Context/Context";
 
 const PizzaMenu = () => {
@@ -54,11 +54,11 @@ const PizzaMenu = () => {
                   pizzaImg: chickenPizza ,
                   pizzaPrice: 299
                 })
-
-                dispatch(setBasePrice(299))
+                
+                
               }}>
                 Customize
-                <span class="material-symbols-outlined">chevron_right</span>
+                <span className="material-symbols-outlined">chevron_right</span>
               </div>
             </div>
           </div>
@@ -89,10 +89,10 @@ const PizzaMenu = () => {
                   pizzaPrice: 249
                 })
 
-                dispatch(setBasePrice(249))
+                
               }}>
                 Customize
-                <span class="material-symbols-outlined">chevron_right</span>
+                <span className="material-symbols-outlined">chevron_right</span>
               </div>
             </div>
           </div>
@@ -123,10 +123,10 @@ const PizzaMenu = () => {
                   pizzaPrice: 289
                 })
 
-                dispatch(setBasePrice(289))
+               
               }}>
                 Customize
-                <span class="material-symbols-outlined">chevron_right</span>
+                <span className="material-symbols-outlined">chevron_right</span>
               </div>
             </div>
           </div>

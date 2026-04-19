@@ -13,6 +13,7 @@ const PizzaPriceSlice = createSlice({
         sizePrice: 0,
         crustPrice: 0,
         toppingsPrice: 0,
+        pizzaPrice: 0,
     },
 
     reducers: {

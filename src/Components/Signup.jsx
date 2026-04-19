@@ -18,7 +18,7 @@ const Signup = () => {
               Full Name
             </label>
             <div className="flex items-center gap-2  px-2 py-2 rounded-xl  bg-[#1f1c1a]">
-              <span class="material-symbols-outlined text-[#ffffffad]">
+              <span className="material-symbols-outlined text-[#ffffffad]">
                 person
               </span>
               <input
@@ -38,7 +38,7 @@ const Signup = () => {
               Email
             </label>
             <div className="flex items-center gap-2  px-2 py-2 rounded-xl  bg-[#1f1c1a]">
-              <span class="material-symbols-outlined text-[#ffffffad]">
+              <span className="material-symbols-outlined text-[#ffffffad]">
                 mail
               </span>
               <input
@@ -58,7 +58,7 @@ const Signup = () => {
               Phone Number
             </label>
             <div className="flex items-center gap-2  px-2 py-2 rounded-xl  bg-[#1f1c1a]">
-              <span class="material-symbols-outlined text-[#ffffffab]">
+              <span className="material-symbols-outlined text-[#ffffffab]">
                 call
               </span>
               <input
@@ -80,7 +80,7 @@ const Signup = () => {
                 Phone Number
               </label>
               <div className="flex items-center gap-2  px-2 py-2 rounded-xl  bg-[#1f1c1a]">
-                <span class="material-symbols-outlined text-[#ffffffab]">
+                <span className="material-symbols-outlined text-[#ffffffab]">
                   lock
                 </span>
                 <input
@@ -117,7 +117,7 @@ const Signup = () => {
         </div>
 
         <div className="flex mt-4 gap-2">
-          <span class="material-symbols-outlined text-[#ffffffc8] cursor-pointer">circle</span>
+          <span className="material-symbols-outlined text-[#ffffffc8] cursor-pointer">circle</span>
           <p className="text-[#ffffffbd]">I accept the terms and conditions</p>
         </div>
       </div>

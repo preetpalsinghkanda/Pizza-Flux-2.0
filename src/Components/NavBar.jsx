@@ -59,7 +59,7 @@ const NavBar = () => {
                 dehaze
               </span>
             ) : (
-              <span class="material-symbols-outlined text-white">close</span>
+              <span className="material-symbols-outlined text-white">close</span>
             )}
           </div>
         </div>

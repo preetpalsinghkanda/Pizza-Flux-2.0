@@ -35,6 +35,17 @@ export const PizzaContextProvider = ({ children }) => {
   const [crust, setCrust] = useState(0);
   const [toppings, setToppings] = useState([]);
 
+  const [isAddToCartEnabled , setIsAddToCartEnabled] = useState(false)
+
+  function checkCartEnabled(state){
+    if(state.value< 1){
+      setIsAddToCartEnabled(false);
+
+    }else{
+      setIsAddToCartEnabled(true)
+    }
+  }
+
   return (
     <PizzaContext.Provider
       value={{
@@ -47,6 +58,9 @@ export const PizzaContextProvider = ({ children }) => {
         setCrust,
         toppings,
         setToppings,
+        checkCartEnabled,
+        isAddToCartEnabled,
+        setIsAddToCartEnabled,
       }}
     >
       {children}
