@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import chickenPizza from "/chicken.png";
 import pepperoniPizza  from '/pepperoni.png';
 import chickenNewPizza from "/chickennew.png";
+import { useDispatch } from "react-redux";
+import { setBasePrice } from "../../Redux/Features/PizzaPriceSlice";
+import PizzaContext from "../../Context/Context";
 
 const PizzaMenu = () => {
+  const{setSelectedPizza} = useContext(PizzaContext);
+
+  const dispatch = useDispatch()
+
+
+
   return (
     <div className=" text-white m-auto max-w-7xl pizza-main flex flex-col gap-2 px-6 my-10">
       <div className="relative top-12">
@@ -37,8 +46,17 @@ const PizzaMenu = () => {
             </div>
 
             <div className="flex justify-between">
-              <span className="text-2xl">₹549 </span>{" "}
-              <div className="flex items-center text-[#FF8B67] cursor-pointer">
+              <span className="text-2xl">₹299 </span>{" "}
+              <div className="flex items-center text-[#FF8B67] cursor-pointer " onClick={()=>{
+                setSelectedPizza({
+                  pizzaName : "Chicken blast",
+                  dis: "Juicy chicken chunks loaded with bold spices and rich flavors. Every bite delivers a fiery, cheesy explosion you won’t forget",
+                  pizzaImg: chickenPizza ,
+                  pizzaPrice: 299
+                })
+
+                dispatch(setBasePrice(299))
+              }}>
                 Customize
                 <span class="material-symbols-outlined">chevron_right</span>
               </div>
@@ -62,8 +80,17 @@ const PizzaMenu = () => {
             </div>
 
             <div className="flex justify-between">
-              <span className="text-2xl">₹349 </span>{" "}
-              <div className="flex items-center text-[#FF8B67] cursor-pointer">
+              <span className="text-2xl">₹249 </span>{" "}
+              <div className="flex items-center text-[#FF8B67] cursor-poi nter" onClick={()=>{
+                setSelectedPizza({
+                  pizzaName : "Pepperoni Feast",
+                  dis: "Generous layers of spicy pepperoni over gooey mozzarella. Every slice delivers a perfect balance of heat and cheesy goodness",
+                  pizzaImg: pepperoniPizza ,
+                  pizzaPrice: 249
+                })
+
+                dispatch(setBasePrice(249))
+              }}>
                 Customize
                 <span class="material-symbols-outlined">chevron_right</span>
               </div>
@@ -87,8 +114,17 @@ const PizzaMenu = () => {
             </div>
 
             <div className="flex justify-between">
-              <span className="text-2xl">₹449 </span>{" "}
-              <div className="flex items-center text-[#FF8B67] cursor-pointer">
+              <span className="text-2xl">₹289 </span>{" "}
+              <div className="flex items-center text-[#FF8B67] cursor-pointer"onClick={()=>{
+                setSelectedPizza({
+                  pizzaName : "Chicken Tikka Delight",
+                  dis: "Smoky chicken chunks tossed in bold spices, layered over creamy melted cheese with Tomato and satisfying pizza experience",
+                  pizzaImg: chickenNewPizza ,
+                  pizzaPrice: 289
+                })
+
+                dispatch(setBasePrice(289))
+              }}>
                 Customize
                 <span class="material-symbols-outlined">chevron_right</span>
               </div>
