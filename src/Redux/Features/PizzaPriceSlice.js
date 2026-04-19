@@ -28,11 +28,12 @@ const PizzaPriceSlice = createSlice({
         },
         setToppingsPrice: (state, action) => {
             state.toppingsPrice = action.payload;
-        }
+        },
+        
 
 
     }
 })
 
-export const { setBasePrice, setSizePrice, setCrustPrice, setToppingsPrice } = PizzaPriceSlice.actions;
+export const { setBasePrice, setSizePrice, setCrustPrice, setToppingsPrice ,} = PizzaPriceSlice.actions;
 export default PizzaPriceSlice.reducer;

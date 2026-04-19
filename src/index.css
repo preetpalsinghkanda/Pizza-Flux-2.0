@@ -37,3 +37,11 @@ body {
 .pizza-card-img {
   filter: drop-shadow(1px 8px 16px rgba(255, 0, 0, 0.507));
 }
+
+
+.no-scrollbar::-webkit-scrollbar{
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
