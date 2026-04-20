@@ -11,6 +11,7 @@ import PizzaCustomize from "./Components/PizzaMenu/PizzaCustomize";
 import PizzaContext from "./Context/Context";
 import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
+import FinalCart from "./Components/FinalCart";
 
 
 const App = () => {
@@ -18,7 +19,7 @@ const App = () => {
   return (
     <div>
       <NavBar />
-      <div className="flex flex-col gap-35 my-15 ">
+      {/* <div className="flex flex-col gap-35 my-15 ">
         <Routes>
           <Route
             path="/"
@@ -49,7 +50,8 @@ const App = () => {
 
 
         </Routes>
-      </div>
+      </div> */}
+      <FinalCart/>
       <PizzaCustomize/>
     </div>
   );
