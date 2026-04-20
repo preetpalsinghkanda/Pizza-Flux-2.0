@@ -38,7 +38,7 @@ export const PizzaContextProvider = ({ children }) => {
   const [isAddToCartEnabled , setIsAddToCartEnabled] = useState(false)
 
   function checkCartEnabled(state){
-    if(state.value< 1){
+    if(state.value < 1){
       setIsAddToCartEnabled(false);
 
     }else{

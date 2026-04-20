@@ -3,14 +3,14 @@ import { useContext } from "react";
 import PizzaContext from "../../Context/Context";
 
 
-const { setIsAddToCartEnabled } = useContext(PizzaContext)
+
 
 const PizzaCart = createSlice({
 
 
     name: "PizaaCart",
     initialState: {
-        PizzaCart: 0
+        value: 0
     },
     reducers: {
 
@@ -21,9 +21,6 @@ const PizzaCart = createSlice({
         PizzaCartDecrement: (state) => {
             if (state.value > 0) {
                 state.value -= 1
-            } else if (state.value <= 0) {
-                setIsAddToCartEnabled(false)
-
             }
         }
     }

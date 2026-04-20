@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import chickenPizza from "/chicken.png";
 import pepperoniPizza from "/pepperoni.png";
 import chickenNewPizza from "/chickennew.png";
@@ -10,7 +10,10 @@ import {
   setToppingsPrice,
 } from "../../Redux/Features/PizzaPriceSlice";
 
-import { PizzaCartIncrement , PizzaCartDecrement } from "../../Redux/Features/PizzaCart";
+import {
+  PizzaCartIncrement,
+  PizzaCartDecrement,
+} from "../../Redux/Features/PizzaCart";
 
 const PizzaCustomize = () => {
   const {
@@ -31,9 +34,18 @@ const PizzaCustomize = () => {
     (state) => state.PizzaPrice,
   );
 
-  const cartValue = useSelector((state)=> state.PizzaCart.value);
+  const cartValue = useSelector((state) => state.PizzaCart.value);
 
-  const PizzaFinalPrice = basePrice + sizePrice + crustPrice + toppingsPrice;
+  const PizzaFinalPrice = (basePrice + sizePrice + crustPrice + toppingsPrice) *  cartValue;
+
+  useEffect(() => {
+    if (cartValue < 1) {
+      setIsAddToCartEnabled(false);
+      
+    } else {
+      setIsAddToCartEnabled(true);
+    }
+  }, [cartValue]);
 
   if (!selectedPizza) return null;
   return (
@@ -61,7 +73,7 @@ const PizzaCustomize = () => {
             </p>
           </div>
         </div>
-
+    
         <div className="mt-30 flex flex-col gap-6">
           <div className="flex flex-col gap-2 mt-6">
             <h5>CHOOSE SIZE</h5>
@@ -198,18 +210,30 @@ const PizzaCustomize = () => {
         <div className="flex my-8 px-4  text-black gap-8 ">
           {isAddToCartEnabled ? (
             <span className=" rounded-2xl w-full font-[500] border bg-[#e77a59ea] flex items-center justify-center gap-4">
-              <button className=" px-2 flex rounded-lg bg-[#e0d5d5ea]">
+              <button
+                onClick={() => {
+                  dispatch(PizzaCartDecrement(cartValue));
+                }}
+                className=" px-2 flex rounded-lg bg-[#e0d5d5ea]"
+              >
                 <span className="material-symbols-outlined ">remove</span>
               </button>{" "}
-              <span className="text-[#ffffff] text-2xl font-extrabold">{cartValue}</span>{" "}
-              <button className=" px-2 flex rounded-lg bg-[#e0d5d5ea]">
+              <span className="text-[#ffffff] text-2xl font-extrabold">
+                {cartValue}
+              </span>{" "}
+              <button
+                onClick={() => {
+                  dispatch(PizzaCartIncrement(cartValue));
+                }}
+                className=" px-2 flex rounded-lg bg-[#e0d5d5ea]"
+              >
                 <span className="material-symbols-outlined">add</span>
               </button>
             </span>
           ) : (
             <button
               onClick={() => {
-                setIsAddToCartEnabled(true);
+                dispatch(PizzaCartIncrement());
               }}
               className="text-xl w-full font-extrabold text-white  border-0 border bg-[#ff784d] text-md rounded-xl flex justify-center items-center gap-3"
             >

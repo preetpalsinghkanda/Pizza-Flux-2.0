@@ -4,6 +4,7 @@ import chickenPizza from "/chicken.png";
 import pepperoniPizza  from '/pepperoni.png';
 import chickenNewPizza from "/chickennew.png";
 import { useDispatch } from "react-redux";
+import { setBasePrice } from "../../Redux/Features/PizzaPriceSlice";
 
 import PizzaContext from "../../Context/Context";
 
@@ -52,9 +53,10 @@ const PizzaMenu = () => {
                   pizzaName : "Chicken blast",
                   dis: "Juicy chicken chunks loaded with bold spices and rich flavors. Every bite delivers a fiery, cheesy explosion you won’t forget",
                   pizzaImg: chickenPizza ,
-                  pizzaPrice: 299
+                  pizzaPrice: 299,
+                  
                 })
-                
+                dispatch(setBasePrice(299))
                 
               }}>
                 Customize
@@ -88,7 +90,7 @@ const PizzaMenu = () => {
                   pizzaImg: pepperoniPizza ,
                   pizzaPrice: 249
                 })
-
+ dispatch(setBasePrice(249))
                 
               }}>
                 Customize
@@ -122,7 +124,7 @@ const PizzaMenu = () => {
                   pizzaImg: chickenNewPizza ,
                   pizzaPrice: 289
                 })
-
+ dispatch(setBasePrice(289))
                
               }}>
                 Customize
