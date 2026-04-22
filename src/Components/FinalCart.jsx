@@ -1,19 +1,62 @@
 import React from "react";
+import chickenPizza from "/chicken.png";
 
 const FinalCart = () => {
   return (
-    <div className=" m-auto max-w-6xl final-cart">
+    <div className=" m-auto max-w-6xl final-cart my-4 px-4 ">
       <div className="flex flex-col gap-2">
         <h3 className="text-white text-6xl font-bold">Your Feast. </h3>
         <p className="text-white text-xl">One more step away from your Pizza</p>
       </div>
 
-      <div>
+      <div className="lg:flex items-start border border-white justify-center gap-8 my-10 flex-col sm:flex-col  lg:flex-row md:flex-col md:justify-end">
         {/* cart left  */}
-        <div className="border "></div>
+
+        <div className="flex flex-1 flex-col gap-5 ">
+          <div className="border gap-4 text-white flex items-center justify-between px-6 py-4  flex-col lg:flex-row md:flex-row">
+            <div className="flex gap-8 flex-col items-center lg:flex-row md:flex-row">
+              <div className=" border border-white ">
+                <img src={chickenPizza} alt="" className="h-40 w-max " />
+              </div>
+
+              <div className="flex items-center justify-between text-center">
+                <div className="flex  flex-col gap-2">
+                  <h3 className="text-4xl">Chicken Blast</h3>
+                  <span className="text-2xl ">
+                    ₹<span>24.00</span>
+                  </span>
+                  <div className="flex  items-center justify-center flex-row gap-2">
+                    <span className="px-4 py-1 rounded-2xl border border-white text-[12px]">
+                      REGULAR
+                    </span>
+                    <span className="px-4 py-1 rounded-2xl border border-white text-[12px]">
+                      REGULAR
+                    </span>
+                    <span className="px-4 py-1 rounded-2xl border border-white text-[12px]">
+                      REGULAR
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex border justify-center items-center gap-4 px-3 py-2 rounded-lg">
+              <span class="material-symbols-outlined cursor-pointer">
+                delete
+              </span>
+              <button className="border-0 flex items-center cursor-pointer">
+                <span class="material-symbols-outlined ">remove</span>
+              </button>
+              <span className="text-xl">1</span>
+              <button className="flex items-center cursor-pointer">
+                <span class="material-symbols-outlined">add</span>
+              </button>
+            </div>
+          </div>
+        </div>
 
         {/* cart right  */}
-        <div className="bg-[#1a1a1a] text-white py-6 mt-5 px-7 rounded-3xl max-w-sm">
+        <div className="bg-[#1a1a1a] text-white py-6  lg:min-w-sm sm:min-w-sm md:min-w-sm  min-w-full px-7 rounded-3xl sm:self-end self-end md:self-end">
           <h5 className="text-2xl">Order Summary</h5>
           <div className="flex flex-col mt-5 gap-3">
             <div className="flex justify-between items-center">
@@ -35,8 +78,10 @@ const FinalCart = () => {
           </div>
           <hr className="border-0 outline-1 my-5 outline-[#ffffff17]" />
 
-          <div className="flex flex-col gap-1"> 
-            <h6 className="text-[12px] text-[#d7552e] font-medium">GRAND TOTAL</h6>
+          <div className="flex flex-col gap-1">
+            <h6 className="text-[12px] text-[#d7552e] font-medium">
+              GRAND TOTAL
+            </h6>
             <span className="text-4xl font-bold">
               ₹<span>540.10</span>
             </span>
@@ -45,9 +90,10 @@ const FinalCart = () => {
           <button className=" text-white font-extrabold my-5 rounded-xl w-full py-4 text-2xl bg-[#ff794e]">
             Proceed
           </button>
-         <div className="flex justify-center text-center text-sm text-[#ffffffac]">
-  Estimated delivery: &nbsp;<span className="text-red-500"> 25-35 mins</span>
-</div>
+          <div className="flex justify-center text-center text-sm text-[#ffffffac]">
+            Estimated delivery: &nbsp;
+            <span className="text-red-500"> 25-35 mins</span>
+          </div>
         </div>
       </div>
     </div>
