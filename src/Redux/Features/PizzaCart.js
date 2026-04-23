@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useContext } from "react";
-import PizzaContext from "../../Context/Context";
+
 
 
 
@@ -10,17 +9,44 @@ const PizzaCart = createSlice({
 
     name: "PizaaCart",
     initialState: {
-        value: 0
+        value: []
     },
     reducers: {
 
 
-        PizzaCartIncrement: (state) => {
-            state.value += 1
+        addToCart: (state, action) => {
+            const { pizzaName, size, crust, toppings } = action.payload;
+
+            const alreadyItem = state.value.find(
+                (item) =>
+                    item.pizzaName === pizzaName &&
+                    item.size === size &&
+                    item.crust === crust &&
+                    JSON.stringify(item.toppings) === JSON.stringify(toppings)
+            );
+
+            if (alreadyItem) {
+                alreadyItem.qty += 1;
+            } else {
+                state.value.push({ ...action.payload, qty: 1 });
+            }
         },
-        PizzaCartDecrement: (state) => {
-            if (state.value > 0) {
-                state.value -= 1
+
+        removeFromCart: (state, action) => {
+            state.value.splice(action.payload, 1);
+        },
+
+
+
+
+        PizzaCartIncrement: (state, action) => {
+            state.value[action.payload].qty += 1;
+        },
+
+
+        PizzaCartDecrement: (state, action) => {
+            if (state.value[action.payload].qty > 1) {
+                state.value[action.payload].qty -= 1
             }
         }
     }
@@ -30,5 +56,5 @@ const PizzaCart = createSlice({
 })
 
 
-export const { PizzaCartIncrement, PizzaCartDecrement } = PizzaCart.actions
+export const { addToCart, removeFromCart, PizzaCartIncrement, PizzaCartDecrement } = PizzaCart.actions
 export default PizzaCart.reducer;
