@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react";
+
 import chickenPizza from "/chicken.png";
 import pepperoniPizza from "/pepperoni.png";
 import chickenNewPizza from "/chickennew.png";
@@ -11,11 +12,15 @@ import {
 } from "../../Redux/Features/PizzaPriceSlice";
 
 import {
-  PizzaCartIncrement,
+ removeFromCart ,
   PizzaCartDecrement,
+  addToCart,
 } from "../../Redux/Features/PizzaCart";
 
 const PizzaCustomize = () => {
+  
+
+
   const {
     selectedPizza,
     setSelectedPizza,
@@ -28,26 +33,56 @@ const PizzaCustomize = () => {
     isAddToCartEnabled,
     setIsAddToCartEnabled,
   } = useContext(PizzaContext);
+
+
   const dispatch = useDispatch();
 
   const { basePrice, sizePrice, crustPrice, toppingsPrice } = useSelector(
     (state) => state.PizzaPrice,
   );
 
-  const cartValue = useSelector((state) => state.PizzaCart.value);
+  
+  const cartItems = useSelector((state) => state.PizzaCart.items);
+  const cartCount = cartItems.length;
 
-  const PizzaFinalPrice = (basePrice + sizePrice + crustPrice + toppingsPrice) *  cartValue;
+  const PizzaFinalPrice = basePrice + sizePrice + crustPrice + toppingsPrice;
 
-  useEffect(() => {
-    if (cartValue < 1) {
+ 
+  const currentItem = selectedPizza
+  ? cartItems.find(
+      (i) =>
+        i.pizzaName === selectedPizza.pizzaName &&
+        i.size === size &&
+        i.crust === crust &&
+        i.toppings === toppings
+    )
+  : null;
+
+const qty = currentItem ? currentItem.qty : 0;
+
+ 
+ useEffect(() => {
+    if (qty < 1) {
       setIsAddToCartEnabled(false);
-      
     } else {
       setIsAddToCartEnabled(true);
     }
-  }, [cartValue]);
+  }, [qty]);
 
-  if (!selectedPizza) return null;
+  useEffect(()=>{
+
+     if (selectedPizza) {
+    setSize(249);
+    setCrust(0);
+    setToppings(0);
+    dispatch(setSizePrice(249));
+    dispatch(setCrustPrice(0));
+    dispatch(setToppingsPrice(0));
+  }
+  },[selectedPizza])
+
+ if (!selectedPizza) return null;
+
   return (
     <div className="no-scrollbar fixed inset-0 bg-black/90 flex justify-center items-center z-50 overflow-y-auto py-20">
       <div className="bg-[black] border border-[#ffffff3c] rounded-4xl text-white pizza-customize m-auto max-w-lg px-8">
@@ -73,7 +108,7 @@ const PizzaCustomize = () => {
             </p>
           </div>
         </div>
-    
+
         <div className="mt-30 flex flex-col gap-6">
           <div className="flex flex-col gap-2 mt-6">
             <h5>CHOOSE SIZE</h5>
@@ -208,22 +243,40 @@ const PizzaCustomize = () => {
         </div>
 
         <div className="flex my-8 px-4  text-black gap-8 ">
-          {isAddToCartEnabled ? (
+          {qty > 0 ? (
             <span className=" rounded-2xl w-full font-[500] border bg-[#e77a59ea] flex items-center justify-center gap-4">
               <button
                 onClick={() => {
-                  dispatch(PizzaCartDecrement(cartValue));
+                  dispatch(
+                    PizzaCartDecrement({
+                      pizzaName: selectedPizza.pizzaName,
+                      size,
+                      crust,
+                      toppings,
+                    }),
+                  );
                 }}
                 className=" px-2 flex rounded-lg bg-[#e0d5d5ea]"
               >
                 <span className="material-symbols-outlined ">remove</span>
               </button>{" "}
               <span className="text-[#ffffff] text-2xl font-extrabold">
-                {cartValue}
+                {qty}
               </span>{" "}
               <button
                 onClick={() => {
-                  dispatch(PizzaCartIncrement(cartValue));
+                  dispatch(
+                    addToCart({
+                      id: selectedPizza.id,
+                        pizzaImg: selectedPizza.pizzaImg,
+                      pizzaName: selectedPizza.pizzaName,
+                      pizzaPrice:
+                        basePrice + sizePrice + crustPrice + toppingsPrice,
+                      size,
+                      crust,
+                      toppings,
+                    }),
+                  );
                 }}
                 className=" px-2 flex rounded-lg bg-[#e0d5d5ea]"
               >
@@ -233,7 +286,18 @@ const PizzaCustomize = () => {
           ) : (
             <button
               onClick={() => {
-                dispatch(PizzaCartIncrement());
+                dispatch(
+                  addToCart({
+                    id: selectedPizza.id,
+                    pizzaName: selectedPizza.pizzaName,
+                    pizzaImg : selectedPizza.pizzaImg,
+                    pizzaPrice:
+                      basePrice + sizePrice + crustPrice + toppingsPrice,
+                    size,
+                    crust,
+                    toppings,
+                  }),
+                );
               }}
               className="text-xl w-full font-extrabold text-white  border-0 border bg-[#ff784d] text-md rounded-xl flex justify-center items-center gap-3"
             >
@@ -244,7 +308,7 @@ const PizzaCustomize = () => {
 
           <div className="text-white flex flex-col items-end font-extrabold">
             <h6 className="text-[14px] text-[#ffffffe0] ">TOTAL</h6>
-            <span className="text-2xl">₹{PizzaFinalPrice}</span>
+            <span className="text-2xl">₹{qty > 0 ? PizzaFinalPrice * qty : PizzaFinalPrice}</span>
           </div>
         </div>
       </div>
