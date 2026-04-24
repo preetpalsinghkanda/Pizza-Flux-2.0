@@ -17,9 +17,9 @@ const PizzaCart = createSlice({
             const alreadyItem = state.items.find(
                 (item) =>
                     item.pizzaName === pizzaName &&
-                    item.size === size &&
-                    item.crust === crust &&
-                    JSON.stringify(item.toppings) === JSON.stringify(toppings)
+                    item.size?.price === size?.price &&
+                    item.crust?.price === crust?.price &&
+                     item.toppings?.price === toppings?.price
             );
             if (alreadyItem) {
                 alreadyItem.qty += 1;
@@ -29,16 +29,24 @@ const PizzaCart = createSlice({
         },
 
         removeFromCart: (state, action) => {
-            state.items = state.items.filter((item) => item.id !== action.payload);
+            state.items = state.items.filter(
+                (i) =>
+                    !(
+                        i.pizzaName === action.payload.pizzaName &&
+                        i.size?.price === action.payload.size?.price &&
+                        i.crust?.price === action.payload.crust?.price &&
+                        i.toppings?.price === action.payload.toppings?.price
+                    )
+            );
         },
 
         PizzaCartIncrement: (state, action) => {
             const item = state.items.find(
                 (i) =>
                     i.pizzaName === action.payload.pizzaName &&
-                    i.size === action.payload.size &&
-                    i.crust === action.payload.crust &&
-                    i.toppings === action.payload.toppings
+                    i.size?.price === action.payload.size?.price &&
+                    i.crust?.price === action.payload.crust?.price &&
+                    i.toppings?.price === action.payload.toppings?.price
             );
 
             if (item) {
@@ -50,9 +58,10 @@ const PizzaCart = createSlice({
             const index = state.items.findIndex(
                 (i) =>
                     i.pizzaName === action.payload.pizzaName &&
-                    i.size === action.payload.size &&
-                    i.crust === action.payload.crust &&
-                    i.toppings === action.payload.toppings
+                    i.size?.price === action.payload.size?.price &&
+                    i.crust?.price === action.payload.crust?.price &&
+
+                     i.toppings?.price === action.payload.toppings?.price
             );
 
             if (index !== -1) {

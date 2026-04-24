@@ -73,7 +73,7 @@ const qty = currentItem ? currentItem.qty : 0;
 
      if (selectedPizza) {
     setSize(249);
-    setCrust(0);
+    setCrust(null);
     setToppings(0);
     dispatch(setSizePrice(249));
     dispatch(setCrustPrice(0));
@@ -115,28 +115,28 @@ const qty = currentItem ? currentItem.qty : 0;
             <div className="text-md flex gap-3">
               <span
                 onClick={() => {
-                  setSize(249);
+                  setSize({name: "Regular" , price : 249});
                   dispatch(setSizePrice(249));
                 }}
-                className={`${size === 249 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer  px-3 py-1.5 rounded-xl`}
+                className={`${size?.price === 249 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer  px-3 py-1.5 rounded-xl`}
               >
                 Regular &nbsp; ₹<span className="text-sm">249</span>{" "}
               </span>
               <span
                 onClick={() => {
-                  setSize(299);
+                  setSize({name: "Medium" , price : 299});
                   dispatch(setSizePrice(299));
                 }}
-                className={`${size === 299 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer px-3 py-1.5 rounded-xl`}
+                className={`${size?.price  === 299 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer px-3 py-1.5 rounded-xl`}
               >
                 Medium &nbsp; ₹<span className="text-sm">299</span>{" "}
               </span>
               <span
                 onClick={() => {
-                  setSize(349);
+                  setSize({name: "Large" , price : 349});
                   dispatch(setSizePrice(349));
                 }}
-                className={`${size === 349 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"} cursor-pointer  px-3 py-1.5 rounded-xl`}
+                className={`${size?.price === 349 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"} cursor-pointer  px-3 py-1.5 rounded-xl`}
               >
                 Large &nbsp; ₹<span className="text-sm">349</span>{" "}
               </span>
@@ -148,44 +148,44 @@ const qty = currentItem ? currentItem.qty : 0;
             <div className="text-md flex gap-3">
               <span
                 onClick={() => {
-                  if (crust === 99) {
-                    setCrust(0);
+                  if (crust?.price === 99) {
+                    setCrust(null);
                     dispatch(setCrustPrice(0));
                   } else {
-                    setCrust(99);
+                   setCrust({ name: "Thin", price: 99 })
                     dispatch(setCrustPrice(99));
                   }
                 }}
-                className={`${crust === 99 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer  px-3 py-1.5 rounded-xl`}
+                className={`${crust?.price === 99 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer  px-3 py-1.5 rounded-xl`}
               >
                 Thin&nbsp;&nbsp;₹<span className="text-sm">99</span>{" "}
               </span>
               <span
                 onClick={() => {
-                  if (crust === 149) {
-                    setCrust(0);
+                  if (crust?.price === 149) {
+                    setCrust(null);
                     dispatch(setCrustPrice(0));
                   } else {
-                    setCrust(149);
+                    setCrust({ name: "Cheese Burst", price: 149 })
                     dispatch(setCrustPrice(149));
                   }
                 }}
-                className={`${crust === 149 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer  px-3 py-1.5 rounded-xl`}
+                className={`${crust?.price === 149 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer  px-3 py-1.5 rounded-xl`}
               >
                 Cheese-brust &nbsp;&nbsp; ₹
                 <span className="text-sm">149</span>{" "}
               </span>
               <span
                 onClick={() => {
-                  if (crust === 199) {
-                    setCrust(0);
+                  if (crust?.price === 199) {
+                    setCrust(null);
                     dispatch(setCrustPrice(0));
                   } else {
-                    setCrust(199);
+                    setCrust({name: "pan" ,  price : 199})
                     dispatch(setCrustPrice(199));
                   }
                 }}
-                className={`${crust === 199 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer  px-3 py-1.5 rounded-xl`}
+                className={`${crust?.price === 199 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer  px-3 py-1.5 rounded-xl`}
               >
                 Pan &nbsp;&nbsp;₹<span className="text-sm">199</span>{" "}
               </span>
@@ -197,43 +197,45 @@ const qty = currentItem ? currentItem.qty : 0;
             <div className="text-md flex gap-3">
               <span
                 onClick={() => {
-                  if (toppings === 149) {
-                    setToppings(0);
+                  if (toppings?.price === 149) {
+                    setToppings(null);
                     dispatch(setToppingsPrice(0));
                   } else {
-                    setToppings(149);
+                    setToppings({name: "Olive" , price : 149});
+                    // setToppings(149);
                     dispatch(setToppingsPrice(149));
                   }
                 }}
-                className={`${toppings === 149 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer  px-3 py-1.5 rounded-xl`}
+                className={`${toppings?.price === 149 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer  px-3 py-1.5 rounded-xl`}
               >
                 Olive&nbsp;&nbsp;₹<span className="text-sm">149</span>{" "}
               </span>
               <span
                 onClick={() => {
-                  if (toppings === 179) {
-                    setToppings(0);
+                  if (toppings?.price === 179) {
+                    setToppings(null);
                     dispatch(setToppingsPrice(0));
                   } else {
-                    setToppings(179);
+                    setToppings({name: "Corn" ,  price : 179})
+                    // setToppings(179);
                     dispatch(setToppingsPrice(179));
                   }
                 }}
-                className={`${toppings === 179 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer  px-3 py-1.5 rounded-xl`}
+                className={`${toppings?.price === 179 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer  px-3 py-1.5 rounded-xl`}
               >
                 Corn &nbsp;&nbsp; ₹<span className="text-sm">179</span>{" "}
               </span>
               <span
                 onClick={() => {
-                  if (toppings === 249) {
-                    setToppings(0);
+                  if (toppings?.price === 249) {
+                    setToppings(null);
                     dispatch(setToppingsPrice(0));
                   } else {
-                    setToppings(249);
+                    setToppings({name: "Extra Cheese" , price : 249});
                     dispatch(setToppingsPrice(249));
                   }
                 }}
-                className={`${toppings === 249 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer  px-3 py-1.5 rounded-xl`}
+                className={`${toppings?.price  === 249 ? "bg-[#261b17] text-[#bf7e6b] border border-[#bf7e6b]" : "bg-[#262626] text-[#d3d3d3]"}  cursor-pointer  px-3 py-1.5 rounded-xl`}
               >
                 Extra Cheese&nbsp;&nbsp;₹
                 <span className="text-sm">249</span>{" "}
@@ -273,7 +275,7 @@ const qty = currentItem ? currentItem.qty : 0;
                       pizzaPrice:
                         basePrice + sizePrice + crustPrice + toppingsPrice,
                       size,
-                      crust,
+                      crust : crust ,
                       toppings,
                     }),
                   );
