@@ -1,16 +1,44 @@
-# React + Vite
+# Pizza Flux 2.0
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A pizza ordering web app that is modern and easy to use, made with React, Redux, with Tailwind.
+Made for a smooth user experience with fast navigation.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+##  Live URL
 
-## React Compiler
+### PC/Laptop
+https://flux20.netlify.app/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Mobile/Phone
+https://sprightly-babka-9fea35.netlify.app/
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+* Modern UI with React JS
+* State management using Redux
+* Toast popup
+* responsive design
+
+---
+
+## Tech Stack
+
+* *Frontend:* `React JS`
+* *State Management:* `Redux Toolkit`
+* *Routing:* `React-Router-DOM`
+* *Styling:* `Tailwind`
+* *Deployment:* `Netlify`
+* *Notifications:* `react-hot-toast` 
+
+---
+
+
+## Screenshots
+
+<img width="1702" height="943" alt="image" src="https://github.com/user-attachments/assets/63a66d48-9e93-4a0f-8024-321ee88c15a4" />
+
+
+
