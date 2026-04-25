@@ -3,7 +3,7 @@ import chickenPizza from "/chicken.png";
 import { useSelector } from "react-redux";
 import EmptyCart from "./EmptyCart";
 import { useDispatch } from "react-redux";
-
+import toast from "react-hot-toast";
 import {
   PizzaCartDecrement,
   PizzaCartIncrement,
@@ -152,7 +152,10 @@ const FinalCart = () => {
               </span>
             </div>
 
-            <button className=" text-white font-extrabold my-5 rounded-xl w-full py-4 text-2xl bg-[#ff794e]">
+            <button
+              onClick={() => toast.success("Order Placed Successfully! ")}
+              className=" cursor-pointer text-white font-extrabold my-5 rounded-xl w-full py-4 text-2xl bg-[#ff794e]"
+            >
               Proceed
             </button>
             <div className="flex justify-center text-center text-sm text-[#ffffffac]">

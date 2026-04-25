@@ -13,11 +13,14 @@ import { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import FinalCart from "./Components/FinalCart";
 
+import { Toaster } from "react-hot-toast";
+
 const App = () => {
   return (
     <div>
+      <Toaster />
       <NavBar />
-     <div className="flex flex-col gap-35 my-15 ">
+      <div className="flex flex-col gap-35 my-15 ">
         <Routes>
           <Route
             path="/"
@@ -40,16 +43,20 @@ const App = () => {
                 <PizzaMenu />
               </>
             }
-
           />
 
-          <Route path="/cart" element={<> <FinalCart /> </> }/>
-
-
-
+          <Route
+            path="/cart"
+            element={
+              <>
+                {" "}
+                <FinalCart />{" "}
+              </>
+            }
+          />
         </Routes>
-      </div> 
-      
+      </div>
+
       <PizzaCustomize />
     </div>
   );

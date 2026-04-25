@@ -35,5 +35,5 @@ const userSlice = createSlice({
 })
 
 
-export const {  setField ,setLoading ,  setSuccess} = userSlice.actions
+export const {  setField ,setLoading , setErrors,  setSuccess} = userSlice.actions
 export default userSlice.reducer ;

@@ -1,11 +1,64 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { setField } from "../Redux/Features/UserSlice";
+import { setField, setErrors } from "../Redux/Features/UserSlice";
+import toast from "react-hot-toast";
 
 const Signup = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+
+  const validateField  = (field, value, data) => {
+    let error = "";
+
+    if (field === "name") {
+      if (!value.trim()) {
+        error = "Name required";
+      }
+    } else if (field === "email") {
+      if (!value.includes("@")) {
+        error = "Please Enter a Valid Email :(";
+      }
+    } else if (field === "phoneNo") {
+      if (value.length !== 10) {
+        error = "Please Enter a Valid Phone Number :(";
+      }
+    } else if (field === "pass") {
+      if (value.length < 6) {
+        error = "Password must be at least 6 characters :(";
+      }
+    } else if (field === "confirmPass") {
+      if (value !== data.pass) {
+        error = "Passwords do not match :(";
+      }
+    } else if (field === "terms") {
+      if (!value) error = "Accept terms";
+    }
+
+    if (Object.keys(error).length > 0) {
+      toast.error("Please fill all details correctly");
+    }
+    return error;
+  };
+
+  const handleChange = (field, value) => {
+    dispatch(setField({ field, value }));
+
+    const newData = {
+      ...user,
+      [field]: value,
+    };
+
+    const fieldError = validateField(field, value, newData);
+
+    dispatch(
+      setErrors({
+        ...user.errors,
+        [field]: fieldError,
+      }),
+    );
+  };
+
   return (
     <div className="border md:w-max lg:m-auto  lg:my-10 md:my-10 md:m-auto my-10 mx-4 bg-[#ffffff10]  signup py-12 px-6 rounded-3xl flex  flex-col gap-8">
       <div className="flex flex-col text-center">
@@ -27,18 +80,21 @@ const Signup = () => {
                 person
               </span>
               <input
-              value={user.name}
+                value={user.name}
                 onChange={(e) => {
-                  dispatch(setField({ field: "name", value: e.target.value }));
+                  handleChange("name", e.target.value);
                 }}
                 type="text"
                 placeholder="PreetPal Singh"
                 className=" outline-0  text-lg text-[#ffffffab]"
               />
             </div>
-            <p className="text-[#ff0000b5] text-sm mt-1 hidden">
-              Invalid Name :(
-            </p>
+
+            {user.errors.name && (
+              <p className="text-[#ff0000b5] text-sm mt-1 ">
+                {user.errors.name}
+              </p>
+            )}
           </div>
 
           {/* email */}
@@ -51,18 +107,18 @@ const Signup = () => {
                 mail
               </span>
               <input
-              value={user.email}
-                onChange={(e) =>
-                  dispatch(setField({ field: "email", value: e.target.value }))
-                }
+                value={user.email}
+                onChange={(e) => handleChange("email", e.target.value)}
                 type="text"
                 placeholder="preetpal@gamil.com"
                 className=" outline-0  text-lg text-[#ffffffab]"
               />
             </div>
-            <p className="text-[#ff0000b5] text-sm mt-1 hidden">
-              Please Enter a Valid Email :(
-            </p>
+            {user.errors.email && (
+              <p className="text-[#ff0000b5] text-sm mt-1 ">
+                {user.errors.email}
+              </p>
+            )}
           </div>
 
           {/* phone number */}
@@ -75,20 +131,19 @@ const Signup = () => {
                 call
               </span>
               <input
-              value={user.phoneNo}
-                onChange={(e) =>
-                  dispatch(
-                    setField({ field: "phoneNo", value: e.target.value }),
-                  )
-                }
+                value={user.phoneNo}
+                onChange={(e) => handleChange("phoneNo", e.target.value)}
                 type="number"
                 placeholder="9625290480"
                 className=" outline-0  text-lg text-[#ffffffab] "
               />
             </div>
-            <p className="text-[#ff0000b5] text-sm mt-1 hidden">
-              Please Enter a Valid Phone Number :(
-            </p>
+
+            {user.errors.phoneNo && (
+              <p className="text-[#ff0000b5] text-sm mt-1 ">
+                {user.errors.phoneNo}
+              </p>
+            )}
           </div>
 
           {/* Password  */}
@@ -103,18 +158,18 @@ const Signup = () => {
                   lock
                 </span>
                 <input
-                value={user.pass}
-                  onChange={(e) =>
-                    dispatch(setField({ field: "pass", value: e.target.value }))
-                  }
-                  type="text"
+                  value={user.pass}
+                  onChange={(e) => handleChange("pass", e.target.value)}
+                  type="password"
                   placeholder="******"
                   className=" outline-0  text-lg text-[#ffffffab]"
                 />
               </div>
-              <p className="text-[#ff0000b5] text-sm mt-1 hidden">
-                Password must be at least 6 characters :(
-              </p>
+              {user.errors.pass && (
+                <p className="text-[#ff0000b5] text-sm mt-1 ">
+                  {user.errors.pass}
+                </p>
+              )}
             </div>
 
             {/* password two  */}
@@ -127,44 +182,55 @@ const Signup = () => {
                   lock
                 </span>
                 <input
-                value={user.confirmPass}
-                  onChange={(e) =>
-                    dispatch(
-                      setField({ field: "confirmPass", value: e.target.value }),
-                    )
-                  }
-                  type="text"
+                  value={user.confirmPass}
+                  onChange={(e) => handleChange("confirmPass", e.target.value)}
+                  type="password"
                   placeholder="******"
                   className=" outline-0  text-lg text-[#ffffffab]"
                 />
               </div>
-              <p className="text-[#ff0000b5] text-sm mt-1 hidden">
-                Passwords do not match :(
-              </p>
+
+              {user.errors.confirmPass && (
+                <p className="text-[#ff0000b5] text-sm mt-1 ">
+                  {user.errors.confirmPass}
+                </p>
+              )}
             </div>
           </div>
         </div>
 
-        <div onClick={()=> dispatch(setField({field : "terms" , value : !user?.terms}))} className="flex mt-4 gap-2 cursor-pointer" >
+        <div
+          onClick={() => handleChange("terms", !user?.terms)}
+          className="flex mt-4 gap-2 cursor-pointer"
+        >
           <input
             type="checkbox"
             checked={user?.terms}
-            onChange={(e) =>
-              dispatch(setField({ field: "terms", value: e.target.checked }))
-            }
+            onChange={() => handleChange("terms", !user?.terms)}
             className="hidden"
           />
 
           <span className="material-symbols-outlined text-[#ffffffc8]">
             {user.terms ? "check_circle" : "radio_button_unchecked"}
           </span>
+
           <p className="text-[#ffffffbd]">I accept the terms and conditions</p>
         </div>
 
-
+        {user.errors.terms && (
+          <p className="text-[#ff0000b5] text-sm mt-1 ">{user.errors.terms}</p>
+        )}
       </div>
 
-      <button className="bg-[#ff4d00] w-full py-2 text-2xl rounded-2xl font-[800] cursor-pointer">
+      <button
+        onClick={() => toast.success("Successfully Signup!")}
+        disabled={Object.keys(user.errors).length > 0}
+        className={`w-full py-2 text-2xl rounded-2xl cursor-pointer font-[800] ${
+          Object.keys(user.errors).length > 0
+            ? "bg-gray-500 cursor-not-allowed"
+            : "bg-[#ff4d00]"
+        }`}
+      >
         Sign Up
       </button>
     </div>
