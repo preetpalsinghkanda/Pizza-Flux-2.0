@@ -5,24 +5,8 @@
 
 
 
-
-.navbar,
-.whypizza,
-.readyorder,
-.hero,
-.small-navbar,
-.empty-cart,
-.signup,
-.pizza-main-hero,
-.pizza-main ,
-.pizza-customize,
-.final-cart{
-  font-family: "Cabin Sketch", sans-serif;
-}
-
-
 body {
-
+font-family: "Cabin Sketch", sans-serif;
   background-color: #000000;
 }
 
@@ -46,9 +30,10 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
-.no-scrollbar::-webkit-scrollbar{
+.no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
 .no-scrollbar {
   scrollbar-width: none;
 }
