@@ -1,6 +1,11 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { setField } from "../Redux/Features/UserSlice";
 
 const Signup = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
   return (
     <div className="border md:w-max lg:m-auto  lg:my-10 md:my-10 md:m-auto my-10 mx-4 bg-[#ffffff10]  signup py-12 px-6 rounded-3xl flex  flex-col gap-8">
       <div className="flex flex-col text-center">
@@ -22,6 +27,10 @@ const Signup = () => {
                 person
               </span>
               <input
+              value={user.name}
+                onChange={(e) => {
+                  dispatch(setField({ field: "name", value: e.target.value }));
+                }}
                 type="text"
                 placeholder="PreetPal Singh"
                 className=" outline-0  text-lg text-[#ffffffab]"
@@ -42,6 +51,10 @@ const Signup = () => {
                 mail
               </span>
               <input
+              value={user.email}
+                onChange={(e) =>
+                  dispatch(setField({ field: "email", value: e.target.value }))
+                }
                 type="text"
                 placeholder="preetpal@gamil.com"
                 className=" outline-0  text-lg text-[#ffffffab]"
@@ -62,7 +75,13 @@ const Signup = () => {
                 call
               </span>
               <input
-                type="text"
+              value={user.phoneNo}
+                onChange={(e) =>
+                  dispatch(
+                    setField({ field: "phoneNo", value: e.target.value }),
+                  )
+                }
+                type="number"
                 placeholder="9625290480"
                 className=" outline-0  text-lg text-[#ffffffab] "
               />
@@ -77,13 +96,17 @@ const Signup = () => {
             {/* password one  */}
             <div className="">
               <label htmlFor="pass" className="text-[white] text-md">
-                Phone Number
+                Password
               </label>
               <div className="flex items-center gap-2  px-2 py-2 rounded-xl  bg-[#1f1c1a]">
                 <span className="material-symbols-outlined text-[#ffffffab]">
                   lock
                 </span>
                 <input
+                value={user.pass}
+                  onChange={(e) =>
+                    dispatch(setField({ field: "pass", value: e.target.value }))
+                  }
                   type="text"
                   placeholder="******"
                   className=" outline-0  text-lg text-[#ffffffab]"
@@ -97,13 +120,19 @@ const Signup = () => {
             {/* password two  */}
             <div className="">
               <label htmlFor="confirm-pass" className="text-[white] text-md">
-                Phone Number
+                Confirm Password
               </label>
               <div className="flex items-center gap-2  px-2 py-2 rounded-xl  bg-[#1f1c1a]">
                 <span className="material-symbols-outlined text-[#ffffffab]">
                   lock
                 </span>
                 <input
+                value={user.confirmPass}
+                  onChange={(e) =>
+                    dispatch(
+                      setField({ field: "confirmPass", value: e.target.value }),
+                    )
+                  }
                   type="text"
                   placeholder="******"
                   className=" outline-0  text-lg text-[#ffffffab]"
@@ -111,15 +140,28 @@ const Signup = () => {
               </div>
               <p className="text-[#ff0000b5] text-sm mt-1 hidden">
                 Passwords do not match :(
-              </p> 
+              </p>
             </div>
           </div>
         </div>
 
-        <div className="flex mt-4 gap-2">
-          <span className="material-symbols-outlined text-[#ffffffc8] cursor-pointer">circle</span>
+        <div onClick={()=> dispatch(setField({field : "terms" , value : !user?.terms}))} className="flex mt-4 gap-2 cursor-pointer" >
+          <input
+            type="checkbox"
+            checked={user?.terms}
+            onChange={(e) =>
+              dispatch(setField({ field: "terms", value: e.target.checked }))
+            }
+            className="hidden"
+          />
+
+          <span className="material-symbols-outlined text-[#ffffffc8]">
+            {user.terms ? "check_circle" : "radio_button_unchecked"}
+          </span>
           <p className="text-[#ffffffbd]">I accept the terms and conditions</p>
         </div>
+
+
       </div>
 
       <button className="bg-[#ff4d00] w-full py-2 text-2xl rounded-2xl font-[800] cursor-pointer">

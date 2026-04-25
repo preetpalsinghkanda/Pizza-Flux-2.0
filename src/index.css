@@ -39,6 +39,12 @@ body {
   filter: drop-shadow(1px 8px 16px rgba(255, 0, 0, 0.507));
 }
 
+/* by GPT */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 .no-scrollbar::-webkit-scrollbar{
   display: none;

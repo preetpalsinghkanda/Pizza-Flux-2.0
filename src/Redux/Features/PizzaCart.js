@@ -1,9 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-
-
-
 const PizzaCart = createSlice({
     name: "PizzaCart",
     initialState: {
