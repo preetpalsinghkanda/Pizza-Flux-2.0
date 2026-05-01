@@ -54,13 +54,13 @@ const FinalCart = () => {
                       </span>
                       <div className="flex  items-center lg:justify-start md:justify-start sm:justify-center  flex-row gap-2">
                         <span className="px-4 py-1 rounded-2xl border border-white text-[12px]">
-                          {item.size.name}
+                          {item.size?.name || "no size selected"}
                         </span>
                         <span className="px-4 py-1 rounded-2xl border border-white text-[12px]">
-                          {item.crust.name}
+                          {item.crust?.name || "no crust"}
                         </span>
                         <span className="px-4 py-1 rounded-2xl border border-white text-[12px]">
-                          {item.toppings.name}
+                          {item.toppings?.name || "no toppings"}
                         </span>
                       </div>
                     </div>
