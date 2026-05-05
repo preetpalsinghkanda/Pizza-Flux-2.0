@@ -3,6 +3,10 @@ import PizzaLogo from "/PizzaLogo.png";
 import PizzaContext from "../Context/Context";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { signInWithPopup, signOut } from "firebase/auth";
+
+
+import {auth , provider} from "../firebase";
 
 const NavBar = () => {
   const navigate = useNavigate();

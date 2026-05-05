@@ -1,13 +1,38 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { setField, setErrors, loginSuccess } from "../Redux/Features/UserSlice";
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+import {
+  setField,
+  setErrors,
+  loginSuccess,
+  resetForm,
+} from "../Redux/Features/UserSlice";
 
 import toast from "react-hot-toast";
 
 const Signup = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const hasErrors = Object.values(user.errors).some((err) => err);
+
+  const handleSignup = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        user.email,
+        user.pass,
+      );
+
+      dispatch(loginSuccess(userCredential.user));
+      dispatch(resetForm());
+      toast.success("Account Created Successfully !");
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   const validateField = (field, value, data) => {
     let error = "";
@@ -36,9 +61,6 @@ const Signup = () => {
       if (!value) error = "Accept terms";
     }
 
-    if (Object.keys(error).length > 0) {
-      toast.error("Please fill all details correctly");
-    }
     return error;
   };
 
@@ -224,19 +246,19 @@ const Signup = () => {
       </div>
 
       <button
-        onClick={() => {
-          dispatch(loginSuccess());
-          toast.success("Successfully Signup!");
-        }}
-        disabled={Object.keys(user.errors).length > 0}
+        onClick={handleSignup}
+        disabled={hasErrors}
         className={`w-full py-2 text-2xl rounded-2xl cursor-pointer font-[800] ${
-          Object.keys(user.errors).length > 0
-            ? "bg-gray-500 cursor-not-allowed"
-            : "bg-[#ff4d00]"
+          hasErrors ? "bg-gray-500 cursor-not-allowed" : "bg-[#ff4d00]"
         }`}
       >
         Sign Up
       </button>
+
+      <span className="text-[#ffffff76] text-center">
+        Already have an account ?{" "}
+        <span className="text-red-500 cursor-pointer">Login here</span>
+      </span>
     </div>
   );
 };

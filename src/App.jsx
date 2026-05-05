@@ -14,6 +14,7 @@ import { Route, Routes } from "react-router-dom";
 import FinalCart from "./Components/FinalCart";
 
 import { Toaster } from "react-hot-toast";
+import Login from "./Components/Login";
 
 const App = () => {
   return (
@@ -21,7 +22,7 @@ const App = () => {
       <Toaster />
       <NavBar />
       <div className="flex flex-col gap-35 my-15 ">
-        <Routes>
+        {/* <Routes>
           <Route
             path="/"
             element={
@@ -52,6 +53,15 @@ const App = () => {
                 {" "}
                 <FinalCart />{" "}
               </>
+            }
+          />
+        </Routes> */}
+
+        <Routes>
+         <Route
+            path="/login"
+            element={
+              <Login/>
             }
           />
         </Routes>

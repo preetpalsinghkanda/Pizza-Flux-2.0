@@ -10,10 +10,18 @@ const userSlice = createSlice({
         pass: "",
         confirmPass: "",
         terms: false,
-        errors: {},
+       
         loading: false,
         success: false,
-        isAuth : false 
+        isAuth : false ,
+        errors: {
+      name: "",
+      email: "",
+      phoneNo: "",
+      pass: "",
+      confirmPass: "",
+      terms: "",
+    },
     },
 
     reducers: {
@@ -38,12 +46,31 @@ const userSlice = createSlice({
         },
         logout : (state) =>{
             state.isAuth = false
-        }
+        },
+            resetForm: (state) => {
+      state.name = "";
+      state.email = "";
+      state.phoneNo = "";
+      state.pass = "";
+      state.confirmPass = "";
+      state.terms = false;
+
+      state.errors = {
+        name: "",
+        email: "",
+        phoneNo: "",
+        pass: "",
+        confirmPass: "",
+        terms: "",
+      };
+    },
+
+
 
 
     }
 })
 
 
-export const {  setField ,setLoading , setErrors,  setSuccess , loginSuccess ,logout } = userSlice.actions
+export const {  setField ,setLoading , setErrors,  setSuccess, resetForm, loginSuccess ,logout } = userSlice.actions
 export default userSlice.reducer ;
