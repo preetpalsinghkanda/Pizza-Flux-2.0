@@ -13,6 +13,7 @@ const userSlice = createSlice({
         errors: {},
         loading: false,
         success: false,
+        isAuth : false 
     },
 
     reducers: {
@@ -30,10 +31,19 @@ const userSlice = createSlice({
         },
         setErrors : (state , action) =>{
             state.errors = action.payload;
+        },
+
+        loginSuccess : (state) => {
+            state.isAuth = true ; 
+        },
+        logout : (state) =>{
+            state.isAuth = false
         }
+
+
     }
 })
 
 
-export const {  setField ,setLoading , setErrors,  setSuccess} = userSlice.actions
+export const {  setField ,setLoading , setErrors,  setSuccess , loginSuccess ,logout } = userSlice.actions
 export default userSlice.reducer ;

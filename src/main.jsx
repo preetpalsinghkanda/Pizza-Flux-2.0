@@ -7,8 +7,10 @@ import { BrowserRouter } from "react-router-dom";
 import { store } from "./Redux/store.js";
 import { Provider } from "react-redux";
 
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+    
     <Provider store={store}>
       <BrowserRouter>
         <PizzaContextProvider>
@@ -16,5 +18,6 @@ createRoot(document.getElementById("root")).render(
         </PizzaContextProvider>
       </BrowserRouter>
     </Provider>
+    
   </StrictMode>,
 );

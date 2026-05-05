@@ -2,11 +2,14 @@ import React, { useContext, useState } from "react";
 import PizzaLogo from "/PizzaLogo.png";
 import PizzaContext from "../Context/Context";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const navigate = useNavigate();
 
   const [isNavBarOpen, setIsNavBar] = useState(false);
+
+  const user = useSelector((state) => state.user);
   return (
     <>
       <div className="bg-[#111110]   flex justify-center border-b-1 border-[#ffffff13]">
@@ -42,6 +45,7 @@ const NavBar = () => {
             >
               <span className="material-symbols-outlined">shopping_cart</span>
             </div>
+
             <div
               onClick={() => navigate("/signup")}
               className={`cursor-pointer ${

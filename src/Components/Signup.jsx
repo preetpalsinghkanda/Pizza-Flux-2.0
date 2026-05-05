@@ -1,14 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { setField, setErrors } from "../Redux/Features/UserSlice";
+import { setField, setErrors, loginSuccess } from "../Redux/Features/UserSlice";
+
 import toast from "react-hot-toast";
 
 const Signup = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
-  const validateField  = (field, value, data) => {
+  const validateField = (field, value, data) => {
     let error = "";
 
     if (field === "name") {
@@ -223,7 +224,10 @@ const Signup = () => {
       </div>
 
       <button
-        onClick={() => toast.success("Successfully Signup!")}
+        onClick={() => {
+          dispatch(loginSuccess());
+          toast.success("Successfully Signup!");
+        }}
         disabled={Object.keys(user.errors).length > 0}
         className={`w-full py-2 text-2xl rounded-2xl cursor-pointer font-[800] ${
           Object.keys(user.errors).length > 0
