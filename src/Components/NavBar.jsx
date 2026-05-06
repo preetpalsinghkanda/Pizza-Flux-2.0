@@ -2,18 +2,22 @@ import React, { useContext, useState } from "react";
 import PizzaLogo from "/PizzaLogo.png";
 import PizzaContext from "../Context/Context";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { signInWithPopup, signOut } from "firebase/auth";
-
-
-import {auth , provider} from "../firebase";
+import { logout } from "../Redux/Features/UserSlice";
+import { auth, provider } from "../firebase";
 
 const NavBar = () => {
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [isNavBarOpen, setIsNavBar] = useState(false);
 
   const user = useSelector((state) => state.user);
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    dispatch(logout());
+  };
   return (
     <>
       <div className="bg-[#111110]   flex justify-center border-b-1 border-[#ffffff13]">
@@ -50,17 +54,27 @@ const NavBar = () => {
               <span className="material-symbols-outlined">shopping_cart</span>
             </div>
 
-            <div
-              onClick={() => navigate("/signup")}
-              className={`cursor-pointer ${
-                location.pathname === "/signup"
-                  ? "bg-[#f6a823] text-black"
-                  : "text-white"
-              } hover:bg-[#727272] hover:text-white px-2 py-1 rounded-lg flex items-center gap-2`}
-            >
-              <span className="material-symbols-outlined">person_edit</span>
-              <span className="text-lg">Signup</span>
-            </div>
+            {user.isAuth ? (
+              <div
+                onClick={handleLogout}
+                className="cursor-pointer text-white hover:bg-[#727272] hover:text-white px-2 py-1 rounded-lg flex items-center gap-2"
+              >
+                <span className="material-symbols-outlined">logout</span>
+                <span className="text-lg">Logout</span>
+              </div>
+            ) : (
+              <div
+                onClick={() => navigate("/signup")}
+                className={`cursor-pointer ${
+                  location.pathname === "/signup"
+                    ? "bg-[#f6a823] text-black"
+                    : "text-white"
+                } hover:bg-[#727272] hover:text-white px-2 py-1 rounded-lg flex items-center gap-2`}
+              >
+                <span className="material-symbols-outlined">person_edit</span>
+                <span className="text-lg">Signup</span>
+              </div>
+            )}
           </div>
 
           <div
@@ -79,32 +93,6 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-
-      {isNavBarOpen && (
-        <div className="small-navbar border md:hidden flex absolute right-0  flex-col gap-3 items-center px-2 py-2">
-          <div
-            onClick={() => navigate("/menu")}
-            className="text-white items-center flex bg-[#20201f] px-4 py-2 rounded-xl gap-2"
-          >
-            Menu <span className="material-symbols-outlined ">menu_book_2</span>
-          </div>
-          <div
-            onClick={() => navigate("/cart")}
-            className="text-white items-center flex bg-[#20201f] px-4 py-2 rounded-xl gap-2"
-          >
-            {" "}
-            Cart{" "}
-            <span className="material-symbols-outlined">shopping_cart</span>
-          </div>
-          <div
-            onClick={() => navigate("/signup")}
-            className="text-white items-center flex bg-[#20201f] px-4 py-2 rounded-xl gap-2"
-          >
-            Signup{" "}
-            <span className="material-symbols-outlined ">person_edit</span>
-          </div>
-        </div>
-      )}
     </>
   );
 };

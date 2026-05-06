@@ -51,7 +51,7 @@ const Login = () => {
   };
 
   return (
-     <div className="border md:w-max lg:m-auto  lg:my-10 md:my-10 md:m-auto my-10 mx-4 bg-[#ffffff10]  signup py-12 px-6 rounded-3xl flex  flex-col gap-6 min-w-md">
+     <div className="border md:w-max lg:m-auto  lg:my-10 md:my-10 md:m-auto my-10 mx-4 bg-[#ffffff10]  signup py-12 px-6 rounded-3xl flex  flex-col gap-6 lg:min-w-md md:min-w-md">
       <div className="flex flex-col text-center">
         <h3 className="signup-heading lg:text-2xl md:text-2xl text-xl text-white">
           Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Account
@@ -96,7 +96,7 @@ const Login = () => {
 
        <span className="text-[#ffffff76] text-center">
         Don't have any Account ?{" "}
-        <span className="text-red-500 cursor-pointer">Signup here</span>
+        <span className="text-red-500 cursor-pointer"  onClick={() => navigate("/signup")}>Signup here</span>
       </span>
     </div>
   );

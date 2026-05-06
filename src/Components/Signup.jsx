@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-
+import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import {
@@ -14,6 +14,7 @@ import {
 import toast from "react-hot-toast";
 
 const Signup = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const hasErrors = Object.values(user.errors).some((err) => err);
@@ -257,7 +258,12 @@ const Signup = () => {
 
       <span className="text-[#ffffff76] text-center">
         Already have an account ?{" "}
-        <span className="text-red-500 cursor-pointer">Login here</span>
+        <span
+          className="text-red-500 cursor-pointer"
+         onClick={() => navigate("/login")}
+        >
+          Login here
+        </span>
       </span>
     </div>
   );
